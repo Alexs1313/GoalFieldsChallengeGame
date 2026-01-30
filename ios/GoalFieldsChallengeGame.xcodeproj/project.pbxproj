@@ -9,9 +9,20 @@
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-GoalFieldsChallengeGame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-GoalFieldsChallengeGame.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		41A57A641E094BA592EEA572 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B01AB6884984508AFF95E62 /* Montserrat-Black.ttf */; };
+		528040095FFD46F8B77657FB /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1380090E0A4478BD4B8C04 /* Montserrat-Regular.ttf */; };
+		546601C5990E4871AAF5796F /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC1BC7D459D48A89D575559 /* Montserrat-Bold.ttf */; };
 		7414BAD6CCC354395D9B8D16 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9499DEC363464B7784CC708E /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38202045A2644C43938065FB /* Montserrat-SemiBold.ttf */; };
+		9F317284A8F44644AF458290 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AD65D76D6F34B02BF1F401C /* Montserrat-Light.ttf */; };
+		B6078DF79936431C98468CE6 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6540DBCDCA3B4192BD22787E /* Montserrat-Medium.ttf */; };
+		D1BAE1722F2B68880094EA86 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BAE1712F2B68880094EA86 /* AVKit.framework */; };
+		D1BAE1742F2B688D0094EA86 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BAE1732F2B688D0094EA86 /* AudioToolbox.framework */; };
+		D1BAE1762F2B68920094EA86 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BAE1752F2B68920094EA86 /* AVFoundation.framework */; };
+		D1BAE1782F2B68E40094EA86 /* balloon-pop-48030.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1BAE1772F2B68E40094EA86 /* balloon-pop-48030.mp3 */; };
+		D1BAE17A2F2B68EA0094EA86 /* firework_single-83058.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1BAE1792F2B68EA0094EA86 /* firework_single-83058.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,11 +30,22 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GoalFieldsChallengeGame/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GoalFieldsChallengeGame/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = GoalFieldsChallengeGame/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1B01AB6884984508AFF95E62 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Black.ttf"; path = "../assets/fonts/Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		38202045A2644C43938065FB /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../assets/fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		3AD65D76D6F34B02BF1F401C /* Montserrat-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Light.ttf"; path = "../assets/fonts/Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-GoalFieldsChallengeGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalFieldsChallengeGame.debug.xcconfig"; path = "Target Support Files/Pods-GoalFieldsChallengeGame/Pods-GoalFieldsChallengeGame.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-GoalFieldsChallengeGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalFieldsChallengeGame.release.xcconfig"; path = "Target Support Files/Pods-GoalFieldsChallengeGame/Pods-GoalFieldsChallengeGame.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-GoalFieldsChallengeGame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoalFieldsChallengeGame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6540DBCDCA3B4192BD22787E /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		6E1380090E0A4478BD4B8C04 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = GoalFieldsChallengeGame/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = GoalFieldsChallengeGame/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D1BAE1712F2B68880094EA86 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		D1BAE1732F2B688D0094EA86 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D1BAE1752F2B68920094EA86 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D1BAE1772F2B68E40094EA86 /* balloon-pop-48030.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "balloon-pop-48030.mp3"; sourceTree = "<group>"; };
+		D1BAE1792F2B68EA0094EA86 /* firework_single-83058.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "firework_single-83058.mp3"; sourceTree = "<group>"; };
+		DEC1BC7D459D48A89D575559 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -32,6 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BAE1762F2B68920094EA86 /* AVFoundation.framework in Frameworks */,
+				D1BAE1742F2B688D0094EA86 /* AudioToolbox.framework in Frameworks */,
+				D1BAE1722F2B68880094EA86 /* AVKit.framework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-GoalFieldsChallengeGame.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,10 +79,26 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1BAE1752F2B68920094EA86 /* AVFoundation.framework */,
+				D1BAE1732F2B688D0094EA86 /* AudioToolbox.framework */,
+				D1BAE1712F2B68880094EA86 /* AVKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-GoalFieldsChallengeGame.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E95A985625E4E47BCB0ECBE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6540DBCDCA3B4192BD22787E /* Montserrat-Medium.ttf */,
+				3AD65D76D6F34B02BF1F401C /* Montserrat-Light.ttf */,
+				DEC1BC7D459D48A89D575559 /* Montserrat-Bold.ttf */,
+				38202045A2644C43938065FB /* Montserrat-SemiBold.ttf */,
+				1B01AB6884984508AFF95E62 /* Montserrat-Black.ttf */,
+				6E1380090E0A4478BD4B8C04 /* Montserrat-Regular.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -75,6 +116,9 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				D1BAE1772F2B68E40094EA86 /* balloon-pop-48030.mp3 */,
+				D1BAE1792F2B68EA0094EA86 /* firework_single-83058.mp3 */,
+				6E95A985625E4E47BCB0ECBE /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -160,7 +204,15 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				D1BAE17A2F2B68EA0094EA86 /* firework_single-83058.mp3 in Resources */,
+				D1BAE1782F2B68E40094EA86 /* balloon-pop-48030.mp3 in Resources */,
 				7414BAD6CCC354395D9B8D16 /* PrivacyInfo.xcprivacy in Resources */,
+				B6078DF79936431C98468CE6 /* Montserrat-Medium.ttf in Resources */,
+				9F317284A8F44644AF458290 /* Montserrat-Light.ttf in Resources */,
+				546601C5990E4871AAF5796F /* Montserrat-Bold.ttf in Resources */,
+				9499DEC363464B7784CC708E /* Montserrat-SemiBold.ttf in Resources */,
+				41A57A641E094BA592EEA572 /* Montserrat-Black.ttf in Resources */,
+				528040095FFD46F8B77657FB /* Montserrat-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,9 +243,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GoalFieldsChallengeGame/Pods-GoalFieldsChallengeGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GoalFieldsChallengeGame/Pods-GoalFieldsChallengeGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -230,9 +286,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GoalFieldsChallengeGame/Pods-GoalFieldsChallengeGame-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GoalFieldsChallengeGame/Pods-GoalFieldsChallengeGame-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -273,7 +333,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GoalFieldsChallengeGame;
 				PRODUCT_NAME = GoalFieldsChallengeGame;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -300,7 +360,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GoalFieldsChallengeGame;
 				PRODUCT_NAME = GoalFieldsChallengeGame;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -376,10 +436,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -448,10 +505,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
