@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, StyleSheet, Text, View } from 'react-native';
+import { Modal, Platform, StyleSheet, Text, View } from 'react-native';
 import { NeonModalTall } from '../goalfieldsscrns/Home';
 
 type GoalfieldsRulesModalProps = {
@@ -12,7 +12,12 @@ const GoalfieldsRulesModal: React.FC<GoalfieldsRulesModalProps> = ({
   setRulesVisible,
 }) => {
   return (
-    <Modal visible={rulesVisible} transparent animationType="fade">
+    <Modal
+      visible={rulesVisible}
+      transparent
+      animationType="fade"
+      statusBarTranslucent={Platform.OS === 'android'}
+    >
       <View style={styles.modalBackdrop}>
         <NeonModalTall
           title="Game Rules"
@@ -43,8 +48,8 @@ const styles = StyleSheet.create({
   },
   rulesText: {
     color: '#FFFFFF',
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: 15,
+    lineHeight: 21,
     textAlign: 'center',
   },
 });

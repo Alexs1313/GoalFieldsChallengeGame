@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Modal, StyleSheet, View } from 'react-native';
+import { Image, Modal, Platform, StyleSheet, View } from 'react-native';
 import { NeonModalSquare } from '../goalfieldsscrns/Home';
 import Goalfieldsetupiconbtn from './Goalfieldsetupiconbtn';
 
@@ -22,33 +22,24 @@ type GoalfieldsSetupModalProps = {
 const GoalfieldsSetupModal: React.FC<GoalfieldsSetupModalProps> = ({
   setupVisible,
   setSetupVisible,
-  isEnabledSound,
-  toggleMusic,
   isEnabledNotifications,
   toggleNotifications,
   isEnabledVibration,
   toggleVibration,
-  handleShare,
 }) => {
   return (
-    <Modal visible={setupVisible} transparent animationType="fade">
+    <Modal
+      visible={setupVisible}
+      transparent
+      animationType="fade"
+      statusBarTranslucent={Platform.OS === 'android'}
+    >
       <View style={styles.modalBackdrop}>
         <NeonModalSquare
           title="Game Setup"
           onClose={() => setSetupVisible(false)}
         >
           <View style={styles.setupRow}>
-            <Goalfieldsetupiconbtn
-              onPress={() => toggleMusic(!isEnabledSound)}
-              icon={
-                isEnabledSound ? (
-                  <Image source={require('../../assets/images/musicon.png')} />
-                ) : (
-                  <Image source={require('../../assets/images/musicoff.png')} />
-                )
-              }
-            />
-
             <Goalfieldsetupiconbtn
               onPress={() => toggleNotifications(!isEnabledNotifications)}
               icon={
@@ -73,15 +64,6 @@ const GoalfieldsSetupModal: React.FC<GoalfieldsSetupModalProps> = ({
           </View>
 
           <View style={{ height: 18 }} />
-
-          <View style={{ alignItems: 'center' }}>
-            <Goalfieldsetupiconbtn
-              onPress={handleShare}
-              icon={
-                <Image source={require('../../assets/images/mdi_share.png')} />
-              }
-            />
-          </View>
         </NeonModalSquare>
       </View>
     </Modal>
@@ -99,6 +81,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
+    marginTop: 30,
   },
 });
 

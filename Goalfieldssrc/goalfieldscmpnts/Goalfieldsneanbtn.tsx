@@ -47,14 +47,14 @@ const styles = StyleSheet.create({
 
   neonTitle: {
     color: '#FFFFFF',
-    fontSize: 17,
+    fontSize: 15,
     textAlign: 'center',
     fontFamily: 'Montserrat-SemiBold',
   },
 
   lockLeft: {
     position: 'absolute',
-    left: 14,
+    left: 8,
     top: 0,
     bottom: 0,
     justifyContent: 'center',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 
   lockRight: {
     position: 'absolute',
-    right: 14,
+    right: 8,
     top: 0,
     bottom: 0,
     justifyContent: 'center',

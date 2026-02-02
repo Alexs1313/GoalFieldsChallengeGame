@@ -108,16 +108,17 @@ const styles = StyleSheet.create({
   boardContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 30,
+    padding: 20,
   },
   boardTitle: {
-    fontSize: 22,
+    fontSize: 18,
     color: '#fff',
-    marginBottom: 10,
+    marginBottom: 5,
     fontFamily: 'Montserrat-SemiBold',
+    textAlign: 'center',
   },
   boardText: {
-    fontSize: 20,
+    fontSize: 16,
     color: '#fff',
     textAlign: 'center',
     fontStyle: 'italic',

@@ -17,6 +17,7 @@ import {
   useWindowDimensions,
   View,
   Vibration,
+  Platform,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -524,7 +525,12 @@ export default function FieldsGoalGame(): JSX.Element {
         </TouchableOpacity>
       </View>
 
-      <Modal visible={introVisible} transparent animationType="fade">
+      <Modal
+        visible={introVisible}
+        transparent
+        animationType="fade"
+        statusBarTranslucent={Platform.OS === 'android'}
+      >
         <View style={styles.modalBackdrop}>
           <ImageBackground
             source={require('../../assets/images/goalfierulesboard.png')}
@@ -566,7 +572,12 @@ export default function FieldsGoalGame(): JSX.Element {
         </View>
       </Modal>
 
-      <Modal visible={deadVisible} transparent animationType="fade">
+      <Modal
+        visible={deadVisible}
+        transparent
+        animationType="fade"
+        statusBarTranslucent={Platform.OS === 'android'}
+      >
         <View style={styles.modalBackdrop}>
           <View style={{ alignItems: 'center', marginBottom: 16 }}>
             <Image
@@ -611,7 +622,12 @@ export default function FieldsGoalGame(): JSX.Element {
         </View>
       </Modal>
 
-      <Modal visible={winVisible} transparent animationType="fade">
+      <Modal
+        visible={winVisible}
+        transparent
+        animationType="fade"
+        statusBarTranslucent={Platform.OS === 'android'}
+      >
         <View style={styles.modalBackdrop}>
           {showWinConfetti && (
             <View
@@ -680,7 +696,7 @@ const styles = StyleSheet.create({
 
   topBadgeWrap: {
     position: 'absolute',
-    top: 46,
+    top: 30,
     alignSelf: 'center',
     zIndex: 20,
   },
