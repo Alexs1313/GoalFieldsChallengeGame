@@ -19,7 +19,7 @@ const StackNavigator: React.FC = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Loader" component={Loader} />
-      <Stack.Screen name="Onboard" component={Onboard} />
+      <Stack.Screen name="Onboard" component={Onboar} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="FieldsGoalGame" component={FieldsGoalGame} />
     </Stack.Navigator>
