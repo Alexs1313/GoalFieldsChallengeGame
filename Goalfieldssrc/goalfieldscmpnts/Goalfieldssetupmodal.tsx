@@ -1,7 +1,10 @@
-import React from 'react';
-import { Image, Modal, Platform, StyleSheet, View } from 'react-native';
+import React, { useMemo } from 'react';
+import { Image, Modal, Platform, useWindowDimensions, View } from 'react-native';
 import { NeonModalSquare } from '../goalfieldsscrns/Home';
 import Goalfieldsetupiconbtn from './Goalfieldsetupiconbtn';
+
+const REF_WIDTH = 375;
+const REF_HEIGHT = 812;
 
 type GoalfieldsSetupModalProps = {
   setupVisible: boolean;
@@ -27,6 +30,31 @@ const GoalfieldsSetupModal: React.FC<GoalfieldsSetupModalProps> = ({
   isEnabledVibration,
   toggleVibration,
 }) => {
+  const { width, height } = useWindowDimensions();
+  const rw = width / REF_WIDTH;
+  const rh = height / REF_HEIGHT;
+  const rs = Math.min(rw, rh, 1.2);
+
+  const s = useMemo(
+    () => ({
+      modalBackdrop: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'center' as const,
+        alignItems: 'center' as const,
+      },
+      setupRow: {
+        flexDirection: 'row' as const,
+        justifyContent: 'center' as const,
+        width: '100%' as const,
+        marginTop: Math.round(29 * rh),
+        gap: Math.round(20 * rw),
+      },
+      spacer: { height: Math.round(18 * rs) },
+    }),
+    [rw, rh, rs],
+  );
+
   return (
     <Modal
       visible={setupVisible}
@@ -34,12 +62,12 @@ const GoalfieldsSetupModal: React.FC<GoalfieldsSetupModalProps> = ({
       animationType="fade"
       statusBarTranslucent={Platform.OS === 'android'}
     >
-      <View style={styles.modalBackdrop}>
+      <View style={s.modalBackdrop}>
         <NeonModalSquare
           title="Game Setup"
           onClose={() => setSetupVisible(false)}
         >
-          <View style={styles.setupRow}>
+          <View style={s.setupRow}>
             <Goalfieldsetupiconbtn
               onPress={() => toggleNotifications(!isEnabledNotifications)}
               icon={
@@ -63,26 +91,11 @@ const GoalfieldsSetupModal: React.FC<GoalfieldsSetupModalProps> = ({
             />
           </View>
 
-          <View style={{ height: 18 }} />
+          <View style={s.spacer} />
         </NeonModalSquare>
       </View>
     </Modal>
   );
 };
-
-const styles = StyleSheet.create({
-  modalBackdrop: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  setupRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginTop: 29,
-  },
-});
 
 export default GoalfieldsSetupModal;

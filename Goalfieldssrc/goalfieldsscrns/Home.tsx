@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Image,
   ImageBackground,
@@ -12,6 +12,9 @@ import {
   View,
   ImageSourcePropType,
 } from 'react-native';
+
+const REF_WIDTH = 375;
+const REF_HEIGHT = 812;
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   useFocusEffect,
@@ -83,7 +86,51 @@ const Home: React.FC = () => {
   const [hapticsOn, setHapticsOn] = useState<boolean>(true);
   const [notifOn, setNotifOn] = useState<boolean>(true);
 
-  const { height } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
+  const rw = width / REF_WIDTH;
+  const rh = height / REF_HEIGHT;
+  const rs = Math.min(rw, rh, 1.2);
+
+  const s = useMemo(
+    () => ({
+      bg: { flex: 1 },
+      center: {
+        flex: 1,
+        alignItems: 'center',
+        paddingTop: height * 0.16,
+        minHeight: height * 0.7,
+      },
+      levelsStack: {
+        width: Math.min(width * 0.72, 280 * rw),
+        alignItems: 'center',
+      },
+      levelBtnWrap: {
+        marginBottom: Math.round(16 * rs),
+      },
+      bottomRow: {
+        flexDirection: 'row' as const,
+        marginTop: Math.round(32 * rs),
+        width: Math.min(width * 0.78, 270 * rw),
+        paddingHorizontal: width * 0.03,
+      },
+      bottomBtnLeft: { flex: 1, marginRight: width * 0.032 },
+      bottomBtnRight: { flex: 1, marginLeft: width * 0.032 },
+      characterWrap: {
+        alignSelf: 'center' as const,
+        justifyContent: 'flex-end' as const,
+        alignItems: 'center' as const,
+        position: 'absolute' as const,
+        bottom: Math.round(-70 * rh),
+        width: '100%' as const,
+      },
+      character: {
+        width: Math.min(width * 0.85, 320 * rw),
+        height: Math.min(width * 0.85, 320 * rh),
+      },
+    }),
+    [width, height, rw, rh, rs],
+  );
+
   const [unlockedLevel, setUnlockedLevel] = useState<number>(1);
 
   useFocusEffect(
@@ -403,6 +450,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 32,
     width: 270,
+    gap: 20,
   },
 
   characterWrap: {

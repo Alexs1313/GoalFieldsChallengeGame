@@ -1,7 +1,16 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Image, ScrollView, ImageBackground } from 'react-native';
+import React, { useEffect, useMemo, useRef } from 'react';
+import {
+  View,
+  Image,
+  ScrollView,
+  ImageBackground,
+  useWindowDimensions,
+} from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
+
+const REF_WIDTH = 375;
+const REF_HEIGHT = 812;
 
 type RootStackParamList = {
   Onboard: undefined;

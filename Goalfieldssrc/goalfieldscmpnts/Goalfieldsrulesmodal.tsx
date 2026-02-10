@@ -1,6 +1,9 @@
-import React from 'react';
-import { Modal, Platform, StyleSheet, Text, View } from 'react-native';
+import React, { useMemo } from 'react';
+import { Modal, Platform, Text, useWindowDimensions, View } from 'react-native';
 import { NeonModalTall } from '../goalfieldsscrns/Home';
+
+const REF_WIDTH = 375;
+const REF_HEIGHT = 812;
 
 type GoalfieldsRulesModalProps = {
   rulesVisible: boolean;
@@ -11,6 +14,29 @@ const GoalfieldsRulesModal: React.FC<GoalfieldsRulesModalProps> = ({
   rulesVisible,
   setRulesVisible,
 }) => {
+  const { width, height } = useWindowDimensions();
+  const rw = width / REF_WIDTH;
+  const rh = height / REF_HEIGHT;
+  const rs = Math.min(rw, rh, 1.2);
+
+  const s = useMemo(
+    () => ({
+      modalBackdrop: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'center' as const,
+        alignItems: 'center' as const,
+      },
+      rulesText: {
+        color: '#FFFFFF',
+        fontSize: Math.round(21 * rs),
+        lineHeight: Math.round(22 * rs),
+        textAlign: 'center' as const,
+      },
+    }),
+    [rs],
+  );
+
   return (
     <Modal
       visible={rulesVisible}
@@ -18,12 +44,12 @@ const GoalfieldsRulesModal: React.FC<GoalfieldsRulesModalProps> = ({
       animationType="fade"
       statusBarTranslucent={Platform.OS === 'android'}
     >
-      <View style={styles.modalBackdrop}>
+      <View style={s.modalBackdrop}>
         <NeonModalTall
           title="Game Rules"
           onClose={() => setRulesVisible(false)}
         >
-          <Text style={styles.rulesText}>
+          <Text style={s.rulesText}>
             Guide the ball from the top of the field to the goal at the bottom
             by tapping on the round grass platforms. Some platforms contain
             hidden spikes. If you step on one, the ball pops and the level
@@ -38,20 +64,5 @@ const GoalfieldsRulesModal: React.FC<GoalfieldsRulesModalProps> = ({
     </Modal>
   );
 };
-
-const styles = StyleSheet.create({
-  modalBackdrop: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  rulesText: {
-    color: '#FFFFFF',
-    fontSize: 15,
-    lineHeight: 21,
-    textAlign: 'center',
-  },
-});
 
 export default GoalfieldsRulesModal;
