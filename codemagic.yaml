@@ -13,7 +13,7 @@ workflows:
         BUNDLE_ID: com.ChallengeGameFields
         XCODE_WORKSPACE: GoalFieldsChallengeGame.xcworkspace
         XCODE_SCHEME: GoalFieldsChallengeGame
-        APP_STORE_APPLE_ID: 6758512508
+        APP_STORE_APPLE_ID: 6759533003
     scripts:
       - name: Install npm dependencies
         script: |
