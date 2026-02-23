@@ -1,7 +1,12 @@
-import React from 'react';
-import { Image, Modal, StyleSheet, View } from 'react-native';
+// Settings modal component
+
+import { Animated, Easing, Image, Modal, StyleSheet, View } from 'react-native';
+
 import { NeonModalSquare } from '../goalfieldsscrns/Home';
+
 import Goalfieldsetupiconbtn from './Goalfieldsetupiconbtn';
+
+import React, { useEffect, useRef } from 'react';
 
 type GoalfieldsSetupModalProps = {
   setupVisible: boolean;
@@ -30,59 +35,101 @@ const GoalfieldsSetupModal: React.FC<GoalfieldsSetupModalProps> = ({
   toggleVibration,
   handleShare,
 }) => {
+  const appearAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (!setupVisible) return;
+    appearAnim.setValue(0);
+    Animated.timing(appearAnim, {
+      toValue: 1,
+      duration: 260,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: true,
+    }).start();
+  }, [setupVisible, appearAnim]);
+
   return (
     <Modal visible={setupVisible} transparent animationType="fade">
       <View style={styles.modalBackdrop}>
-        <NeonModalSquare
-          title="Game Setup"
-          onClose={() => setSetupVisible(false)}
+        <Animated.View
+          style={{
+            opacity: appearAnim,
+            transform: [
+              {
+                scale: appearAnim.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [0.94, 1],
+                }),
+              },
+            ],
+          }}
         >
-          <View style={styles.setupRow}>
-            <Goalfieldsetupiconbtn
-              onPress={() => toggleMusic(!isEnabledSound)}
-              icon={
-                isEnabledSound ? (
-                  <Image source={require('../../assets/images/musicon.png')} />
-                ) : (
-                  <Image source={require('../../assets/images/musicoff.png')} />
-                )
-              }
-            />
+          <NeonModalSquare
+            title="Game Setup"
+            onClose={() => setSetupVisible(false)}
+          >
+            <View style={styles.setupRow}>
+              <Goalfieldsetupiconbtn
+                onPress={() => toggleMusic(!isEnabledSound)}
+                icon={
+                  isEnabledSound ? (
+                    <Image
+                      source={require('../../assets/images/musicon.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../assets/images/musicoff.png')}
+                      style={{ right: 2, top: 1 }}
+                    />
+                  )
+                }
+              />
 
-            <Goalfieldsetupiconbtn
-              onPress={() => toggleNotifications(!isEnabledNotifications)}
-              icon={
-                isEnabledNotifications ? (
-                  <Image source={require('../../assets/images/notfon.png')} />
-                ) : (
-                  <Image source={require('../../assets/images/notfoff.png')} />
-                )
-              }
-            />
+              <Goalfieldsetupiconbtn
+                onPress={() => toggleNotifications(!isEnabledNotifications)}
+                icon={
+                  isEnabledNotifications ? (
+                    <Image source={require('../../assets/images/notfon.png')} />
+                  ) : (
+                    <Image
+                      source={require('../../assets/images/notfoff.png')}
+                      style={{ right: 2, top: 3 }}
+                    />
+                  )
+                }
+              />
 
-            <Goalfieldsetupiconbtn
-              onPress={() => toggleVibration(!isEnabledVibration)}
-              icon={
-                isEnabledVibration ? (
-                  <Image source={require('../../assets/images/vibroon.png')} />
-                ) : (
-                  <Image source={require('../../assets/images/vibrooff.png')} />
-                )
-              }
-            />
-          </View>
+              <Goalfieldsetupiconbtn
+                onPress={() => toggleVibration(!isEnabledVibration)}
+                icon={
+                  isEnabledVibration ? (
+                    <Image
+                      source={require('../../assets/images/vibroon.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../assets/images/vibrooff.png')}
+                    />
+                  )
+                }
+              />
+            </View>
 
-          <View style={{ height: 18 }} />
+            <View style={{ height: 18 }} />
 
-          <View style={{ alignItems: 'center' }}>
-            <Goalfieldsetupiconbtn
-              onPress={handleShare}
-              icon={
-                <Image source={require('../../assets/images/mdi_share.png')} />
-              }
-            />
-          </View>
-        </NeonModalSquare>
+            <View style={{ alignItems: 'center' }}>
+              <Goalfieldsetupiconbtn
+                onPress={handleShare}
+                icon={
+                  <Image
+                    source={require('../../assets/images/mdi_share.png')}
+                    style={{ top: -2 }}
+                  />
+                }
+              />
+            </View>
+          </NeonModalSquare>
+        </Animated.View>
       </View>
     </Modal>
   );

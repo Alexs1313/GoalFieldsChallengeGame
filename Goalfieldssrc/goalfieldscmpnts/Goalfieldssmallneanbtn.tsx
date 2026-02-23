@@ -1,5 +1,12 @@
+// Small neon button component
+
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+} from 'react-native';
 import React from 'react';
-import { ImageBackground, StyleSheet, Text } from 'react-native';
 
 type GoalfieldsSmallNeonButtonProps = {
   title: string;
@@ -8,12 +15,23 @@ type GoalfieldsSmallNeonButtonProps = {
 const GoalfieldsSmallNeonButton: React.FC<GoalfieldsSmallNeonButtonProps> = ({
   title,
 }) => {
+  const { height } = useWindowDimensions();
+  const isSmallScreen = height <= 700;
+
   return (
     <ImageBackground
       source={require('../../assets/images/goalfieneons.png')}
-      style={styles.smallOuter}
+      style={[
+        styles.smallOuter,
+        {
+          width: isSmallScreen ? 118 : 131,
+          height: isSmallScreen ? 44 : 48,
+        },
+      ]}
     >
-      <Text style={styles.smallTitle}>{title}</Text>
+      <Text style={[styles.smallTitle, { fontSize: isSmallScreen ? 16 : 18 }]}>
+        {title}
+      </Text>
     </ImageBackground>
   );
 };

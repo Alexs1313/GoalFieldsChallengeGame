@@ -1,28 +1,32 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+// navigation
 
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+
+// components
 import Home from '../goalfieldsscrns/Home';
 import Onboard from '../goalfieldsscrns/Onboard';
 import Loader from '../goalfieldsscrns/Loader';
 import FieldsGoalGame from '../goalfieldsscrns/FieldsGoalGame';
 
-export type RootStackParamList = {
+// types
+export type StackList = {
   Loader: undefined;
   Onboard: undefined;
   Home: undefined;
   FieldsGoalGame: { level: number };
 };
 
-const Stack = createStackNavigator<RootStackParamList>();
+const BasicRouter = createStackNavigator<StackList>();
 
 const StackNavigator: React.FC = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Loader" component={Loader} />
-      <Stack.Screen name="Onboard" component={Onboard} />
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="FieldsGoalGame" component={FieldsGoalGame} />
-    </Stack.Navigator>
+    <BasicRouter.Navigator screenOptions={{ headerShown: false }}>
+      <BasicRouter.Screen name="Loader" component={Loader} />
+      <BasicRouter.Screen name="Onboard" component={Onboard} />
+      <BasicRouter.Screen name="Home" component={Home} />
+      <BasicRouter.Screen name="FieldsGoalGame" component={FieldsGoalGame} />
+    </BasicRouter.Navigator>
   );
 };
 

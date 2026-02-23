@@ -1,11 +1,14 @@
-import React from 'react';
+// Icon button component
+
 import {
   ImageBackground,
   StyleSheet,
-  TouchableOpacity,
+  useWindowDimensions,
   ViewStyle,
   StyleProp,
 } from 'react-native';
+import Goalfieldspressablebtn from './Goalfieldspressablebtn';
+import React from 'react';
 
 type GoalfieldSetupIconButtonProps = {
   icon: React.ReactNode;
@@ -18,15 +21,24 @@ const Goalfieldsetupiconbtn: React.FC<GoalfieldSetupIconButtonProps> = ({
   onPress,
   style,
 }) => {
+  const { height } = useWindowDimensions();
+  const isSmallScreen = height <= 700;
+
   return (
-    <TouchableOpacity activeOpacity={0.85} onPress={onPress} style={style}>
+    <Goalfieldspressablebtn onPress={onPress} style={style}>
       <ImageBackground
         source={require('../../assets/images/goalfieldrndbtn.png')}
-        style={styles.iconBtnOuter}
+        style={[
+          styles.iconBtnOuter,
+          {
+            width: isSmallScreen ? 48 : 54,
+            height: isSmallScreen ? 48 : 54,
+          },
+        ]}
       >
         {icon}
       </ImageBackground>
-    </TouchableOpacity>
+    </Goalfieldspressablebtn>
   );
 };
 

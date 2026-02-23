@@ -1,11 +1,14 @@
+// Context
+
+import Sound from 'react-native-sound';
+
 import React, {
   createContext,
-  useContext,
+  useContext as ctxxHook,
   useMemo,
   useState,
   type PropsWithChildren,
 } from 'react';
-import Sound from 'react-native-sound';
 
 type StoreContextValue = {
   isEnabledVibration: boolean;
@@ -26,7 +29,7 @@ export const StoreContext = createContext<StoreContextValue | undefined>(
 );
 
 export const useStore = (): StoreContextValue => {
-  const ctx = useContext(StoreContext);
+  const ctx = ctxxHook(StoreContext);
   if (!ctx) {
     throw new Error('useStore must be used within ContextProvider');
   }
@@ -34,8 +37,15 @@ export const useStore = (): StoreContextValue => {
 };
 
 export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
+  // Settings states
+
+  // Vibration state
   const [isEnabledVibration, setIsEnabledVibration] = useState<boolean>(false);
+
+  // Sound state
   const [isEnabledSound, setIsEnabledSound] = useState<boolean>(false);
+
+  // Notifications state
   const [isEnabledNotifications, setIsEnabledNotifications] =
     useState<boolean>(false);
 
@@ -49,7 +59,7 @@ export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
           return;
         }
         clickSound.play(success => {
-          if (!success) console.log('Sound playback failed');
+          if (!success) console.log('Sound win failed');
           clickSound.release();
         });
       },
@@ -59,6 +69,7 @@ export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const loseClick = () => {
     const clickSound = new Sound(
       'balloon-pop-48030.mp3',
+
       Sound.MAIN_BUNDLE,
       error => {
         if (error) {
@@ -66,14 +77,14 @@ export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
           return;
         }
         clickSound.play(success => {
-          if (!success) console.log('Sound playback failed');
+          if (!success) console.log('Sound lose failed :(');
           clickSound.release();
         });
       },
     );
   };
 
-  const value = useMemo<StoreContextValue>(
+  const settingsvalue = useMemo<StoreContextValue>(
     () => ({
       isEnabledVibration,
       setIsEnabledVibration,
@@ -88,6 +99,8 @@ export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
   );
 
   return (
-    <StoreContext.Provider value={value}>{children}</StoreContext.Provider>
+    <StoreContext.Provider value={settingsvalue}>
+      {children}
+    </StoreContext.Provider>
   );
 };

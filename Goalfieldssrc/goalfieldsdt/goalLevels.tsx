@@ -1,6 +1,6 @@
 export type LevelId = 1 | 2 | 3 | 4;
 
-export type LevelMeta = {
+export type lvllTypes = {
   id: LevelId;
   name: string;
   rows: number[];
@@ -9,41 +9,41 @@ export type LevelMeta = {
   subtitle: string;
 };
 
-export const LEVEL_META: Record<LevelId, LevelMeta> = {
+export const LEVEL_META: Record<LevelId, lvllTypes> = {
   1: {
     id: 1,
     name: 'Starter Field',
-    rows: [2, 2, 2, 2],
-    spikesRange: [3, 3],
+    rows: [3, 3, 3, 3],
+    spikesRange: [4, 5],
     stars: 1,
     subtitle:
-      'Learn the basics and find the safe path through two simple rows.',
+      'Learn the basics and find a safe route through a wider 4-row field.',
   },
   2: {
     id: 2,
     name: 'Midfield Route',
-    rows: [3, 3, 3, 3],
-    spikesRange: [4, 5],
+    rows: [4, 4, 4, 4, 4],
+    spikesRange: [8, 10],
     stars: 2,
     subtitle:
-      'More rows and more traps. Watch the reveals and pick your route carefully.',
+      'The board grows to five rows, with denser traps and fewer safe decisions.',
   },
   3: {
     id: 3,
     name: 'Danger Grid',
-    rows: [4, 4, 4, 4],
-    spikesRange: [6, 7],
+    rows: [5, 5, 5, 5, 5],
+    spikesRange: [13, 16],
     stars: 3,
     subtitle:
-      'A tight 4×4 grid full of hidden spikes. Rely on memory and precise choices.',
+      'A full 5×5-style field with heavy spike pressure. Memory and precision are critical.',
   },
   4: {
     id: 4,
     name: 'Pyramid Challenge',
-    rows: [1, 2, 3, 4, 5],
-    spikesRange: [7, 9],
+    rows: [3, 4, 5, 6, 6, 5],
+    spikesRange: [17, 22],
     stars: 4,
     subtitle:
-      'A five-row pyramid with the hardest spike placement. Only perfect decisions reach the goal.',
+      'A six-row late-game gauntlet with near-max spike density. One wrong pick ends the run.',
   },
 };

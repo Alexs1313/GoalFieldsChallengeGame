@@ -1,5 +1,14 @@
+// Neon button component
+
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import React from 'react';
-import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 type GoalfieldsNeonButtonProps = {
   title: string;
@@ -10,23 +19,36 @@ const Goalfieldsneanbtn: React.FC<GoalfieldsNeonButtonProps> = ({
   title,
   locked = false,
 }) => {
+  const { height } = useWindowDimensions();
+  const isSmallScreen = height <= 700;
+
+  const neonOuterWidth = isSmallScreen ? 170 : 192;
+  const neonOuterHeight = isSmallScreen ? 50 : 70;
+  const titleFontSize = isSmallScreen ? 15 : 17;
+  const lockOffset = isSmallScreen ? 10 : 14;
+
   return (
     <ImageBackground
       source={require('../../assets/images/goalfieneonbtn.png')}
-      style={styles.neonOuter}
+      style={[
+        styles.neonOuter,
+        { width: neonOuterWidth, height: neonOuterHeight },
+      ]}
       resizeMode="stretch"
     >
       <View>
-        <Text style={styles.neonTitle}>{title}</Text>
+        <Text style={[styles.neonTitle, { fontSize: titleFontSize }]}>
+          {title}
+        </Text>
 
         {locked && (
           <>
-            <View style={styles.lockLeft}>
+            <View style={[styles.lockLeft, { left: lockOffset }]}>
               <Image
                 source={require('../../assets/images/solar_lock-outline.png')}
               />
             </View>
-            <View style={styles.lockRight}>
+            <View style={[styles.lockRight, { right: lockOffset }]}>
               <Image
                 source={require('../../assets/images/solar_lock-outline.png')}
               />

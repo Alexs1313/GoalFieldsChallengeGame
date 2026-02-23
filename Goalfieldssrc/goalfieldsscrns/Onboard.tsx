@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+// Onboarding screen
+
+import {
+  useNavigation,
+  NavigationProp,
+  useFocusEffect,
+} from '@react-navigation/native';
+import React, { useCallback, useState } from 'react';
 import {
   Image,
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
+  ImageBackground as Layout,
+  ScrollView as BaseScrll,
+  StyleSheet as CusStls,
   Text,
-  TouchableOpacity,
   useWindowDimensions,
   View,
 } from 'react-native';
+import Goalfieldspressablebtn from '../goalfieldscmpnts/Goalfieldspressablebtn';
+import Orientation from 'react-native-orientation-locker';
 
 type RootStackParamList = {
   Home: undefined;
@@ -19,54 +26,68 @@ const ongoalimages = [
   require('../../assets/images/goalfieon1.png'),
   require('../../assets/images/goalfieon2.png'),
   require('../../assets/images/goalfieon3.png'),
+  require('../../assets/images/goalfieldldlogo.png'),
   require('../../assets/images/goalfieon4.png'),
 ] as const;
 
 const ongoaltexts = [
   {
-    title: 'Guide the Ball',
-    text: 'Move the ball across grass tiles by tapping the next platform. Your goal is to reach the gate at the bottom.',
+    upptxt: 'Guide the Ball',
+    secdtxt:
+      'Move the ball across grass tiles by tapping the next platform. Your goal is to reach the gate at the bottom.',
   },
   {
-    title: 'Hidden Traps',
-    text: 'Some tiles contain spikes. Step on them and the ball pops. Pass a row safely to reveal where the spikes were.',
+    upptxt: 'Hidden Traps',
+    secdtxt:
+      'Some tiles contain spikes. Before each move, you see how many spikes are in the current row, but not where they are.',
   },
   {
-    title: 'Every Row Has a Safe Tile',
-    text: 'Each row is always passable. Memorize revealed spikes and choose the safest route to the goal.',
+    upptxt: 'Use Your Safe Move',
+    secdtxt:
+      'You get one Safe Move per attempt. It gives one guaranteed safe step, then becomes unavailable.',
   },
   {
-    title: 'Reach the Final Challenge',
-    text: 'Complete all four levels, unlock trophies for your character, and become the champion of Goal Fields.',
+    upptxt: 'Beat Levels Smarter',
+    secdtxt:
+      'Each row always has at least one safe tile. Reach the goal to unlock levels and review attempts and safe guess percentage.',
+  },
+  {
+    upptxt: 'Reach the Final Challenge',
+    secdtxt:
+      'Complete all four levels, unlock trophies for your character, and become the champion of Goal Fields.',
   },
 ] as const;
 
 const Onboard: React.FC = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currTrackMarker, setCurTrackMarker] = useState<number>(0);
+
+  useFocusEffect(
+    useCallback(() => {
+      Orientation.lockToPortrait();
+    }, []),
+  );
 
   const handleNext = () => {
-    if (currentIndex < 3) {
-      setCurrentIndex(prev => prev + 1);
-    } else {
-      navigation.navigate('Home');
-    }
+    currTrackMarker < ongoaltexts.length - 1
+      ? setCurTrackMarker(p => p + 1)
+      : navigation.navigate('Home');
   };
 
   return (
-    <ImageBackground
+    <Layout
       source={require('../../assets/images/goalfiemainbg.png')}
       style={{ flex: 1 }}
     >
-      <ScrollView
+      <BaseScrll
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
       >
         <View style={[styles.goalcont, { paddingBottom: height * 0.05 }]}>
-          <Image source={ongoalimages[currentIndex]} />
+          <Image source={ongoalimages[currTrackMarker]} />
 
-          <ImageBackground
+          <Layout
             source={require('../../assets/images/goalfiemainboard.png')}
             style={{
               width: 340,
@@ -77,29 +98,29 @@ const Onboard: React.FC = () => {
           >
             <View style={styles.boardContainer}>
               <Text style={styles.boardTitle}>
-                {ongoaltexts[currentIndex].title}
+                {ongoaltexts[currTrackMarker].upptxt}
               </Text>
               <Text style={styles.boardText}>
-                {ongoaltexts[currentIndex].text}
+                {ongoaltexts[currTrackMarker].secdtxt}
               </Text>
             </View>
-          </ImageBackground>
+          </Layout>
 
-          <TouchableOpacity activeOpacity={0.7} onPress={handleNext}>
-            <ImageBackground
+          <Goalfieldspressablebtn onPress={handleNext}>
+            <Layout
               source={require('../../assets/images/goalfieldrndbtn.png')}
               style={styles.goalnextbtn}
             >
               <Image source={require('../../assets/images/goalfienxt.png')} />
-            </ImageBackground>
-          </TouchableOpacity>
+            </Layout>
+          </Goalfieldspressablebtn>
         </View>
-      </ScrollView>
-    </ImageBackground>
+      </BaseScrll>
+    </Layout>
   );
 };
 
-const styles = StyleSheet.create({
+const styles = CusStls.create({
   goalcont: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -115,9 +136,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginBottom: 10,
     fontFamily: 'Montserrat-SemiBold',
+    textAlign: 'center',
   },
   boardText: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#fff',
     textAlign: 'center',
     fontStyle: 'italic',

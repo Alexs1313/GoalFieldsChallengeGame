@@ -1,5 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Image, ScrollView, ImageBackground } from 'react-native';
+import {
+  View,
+  Image,
+  ScrollView as Scrll,
+  ImageBackground,
+} from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 
@@ -7,7 +12,7 @@ type RootStackParamList = {
   Onboard: undefined;
 };
 
-export const loaderHTML = `
+export const entryloader = `
 <!DOCTYPE html>
 <html>
   <head>
@@ -66,7 +71,7 @@ const Loader: React.FC = () => {
     timerRef.current = setTimeout(() => {
       try {
         nav.navigate('Onboard');
-        console.log('nav!');
+        console.log('nav succsess!');
       } catch (err) {
         console.warn('replace failed', err);
         try {
@@ -91,7 +96,7 @@ const Loader: React.FC = () => {
       source={require('../../assets/images/goalfieldsldbg.png')}
       style={{ flex: 1, backgroundColor: '#151225' }}
     >
-      <ScrollView
+      <Scrll
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
       >
@@ -109,12 +114,12 @@ const Loader: React.FC = () => {
         <View style={{ position: 'absolute', bottom: 40, alignSelf: 'center' }}>
           <WebView
             originWhitelist={['*']}
-            source={{ html: loaderHTML }}
+            source={{ html: entryloader }}
             style={{ width: 360, height: 10, backgroundColor: 'transparent' }}
             scrollEnabled={false}
           />
         </View>
-      </ScrollView>
+      </Scrll>
     </ImageBackground>
   );
 };

@@ -1,16 +1,16 @@
 workflows:
   ios-workflow:
-    name: 'РiiNc0: Challenge Game Fields'
+    name: 'PiiNc0: Challenge Game Fields'
     max_build_duration: 120
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: GoalFieldsAPIKey
+      app_store_connect: ChallengeGameFieldsAPIKey
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.GoalFieldsChallengeGame
+        bundle_identifier: com.ChallengeGameFields
       vars:
-        BUNDLE_ID: com.GoalFieldsChallengeGame
+        BUNDLE_ID: com.ChallengeGameFields
         XCODE_WORKSPACE: GoalFieldsChallengeGame.xcworkspace
         XCODE_SCHEME: GoalFieldsChallengeGame
         APP_STORE_APPLE_ID: 6758512508
@@ -44,4 +44,4 @@ workflows:
       app_store_connect:
         auth: integration
         submit_to_app_store: true
-        copyright: 'РiiNc0: Challenge Game Fields 2026'
+        copyright: 'PiiNc0: Challenge Game Fields 2026'
