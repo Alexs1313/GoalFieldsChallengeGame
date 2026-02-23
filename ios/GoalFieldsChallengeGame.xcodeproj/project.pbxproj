@@ -360,7 +360,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ChallengeGameFields;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GoalFields;
 				PRODUCT_NAME = GoalFieldsChallengeGame;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

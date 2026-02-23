@@ -1,19 +1,19 @@
 workflows:
   ios-workflow:
-    name: 'PiiNc0: Challenge Game Fields'
+    name: 'Goal Fields Challenge Game'
     max_build_duration: 120
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: ChallengeGameFieldsAPIKey
+      app_store_connect: GoalFieldsNewAPIKey
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.ChallengeGameFields
+        bundle_identifier: com.GoalFields
       vars:
-        BUNDLE_ID: com.ChallengeGameFields
+        BUNDLE_ID: com.GoalFields
         XCODE_WORKSPACE: GoalFieldsChallengeGame.xcworkspace
         XCODE_SCHEME: GoalFieldsChallengeGame
-        APP_STORE_APPLE_ID: 6759533003
+        APP_STORE_APPLE_ID: 6759551488
     scripts:
       - name: Install npm dependencies
         script: |
@@ -44,4 +44,4 @@ workflows:
       app_store_connect:
         auth: integration
         submit_to_app_store: true
-        copyright: 'PiiNc0: Challenge Game Fields 2026'
+        copyright: 'Goal Fields Challenge Game 2026'
