@@ -23,7 +23,7 @@ const StackNavigator: React.FC = () => {
   return (
     <BasicRouter.Navigator screenOptions={{ headerShown: false }}>
       <BasicRouter.Screen name="Loader" component={Loader} />
-      <BasicRouter.Screen name="Onboard" component={Onboar} />
+      <BasicRouter.Screen name="Onboard" component={Onboard} />
       <BasicRouter.Screen name="Home" component={Home} />
       <BasicRouter.Screen name="FieldsGoalGame" component={FieldsGoalGame} />
     </BasicRouter.Navigator>

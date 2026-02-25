@@ -5,8 +5,9 @@ import {
   NavigationProp,
   useFocusEffect,
 } from '@react-navigation/native';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
+  Animated,
   Image,
   ImageBackground as Layout,
   ScrollView as BaseScrll,
@@ -62,6 +63,9 @@ const Onboard: React.FC = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [currTrackMarker, setCurTrackMarker] = useState<number>(0);
+  const [typedTitle, setTypedTitle] = useState<string>('');
+  const [typedBody, setTypedBody] = useState<string>('');
+  const [imgOpacity] = useState<Animated.Value>(new Animated.Value(0));
 
   useFocusEffect(
     useCallback(() => {
@@ -75,6 +79,45 @@ const Onboard: React.FC = () => {
       : navigation.navigate('Home');
   };
 
+  useEffect(() => {
+    imgOpacity.setValue(0);
+    Animated.timing(imgOpacity, {
+      toValue: 1,
+      duration: 320,
+      useNativeDriver: true,
+    }).start();
+  }, [currTrackMarker, imgOpacity]);
+
+  useEffect(() => {
+    const title = ongoaltexts[currTrackMarker].upptxt;
+    const body = ongoaltexts[currTrackMarker].secdtxt;
+    const timers: Array<ReturnType<typeof setTimeout>> = [];
+
+    setTypedTitle('');
+    setTypedBody('');
+
+    for (let i = 0; i < title.length; i++) {
+      timers.push(
+        setTimeout(() => {
+          setTypedTitle(title.slice(0, i + 1));
+        }, i * 28),
+      );
+    }
+
+    const bodyStartDelay = title.length * 28 + 120;
+    for (let i = 0; i < body.length; i++) {
+      timers.push(
+        setTimeout(() => {
+          setTypedBody(body.slice(0, i + 1));
+        }, bodyStartDelay + i * 12),
+      );
+    }
+
+    return () => {
+      timers.forEach(t => clearTimeout(t));
+    };
+  }, [currTrackMarker]);
+
   return (
     <Layout
       source={require('../../assets/images/goalfiemainbg.png')}
@@ -85,7 +128,9 @@ const Onboard: React.FC = () => {
         showsVerticalScrollIndicator={false}
       >
         <View style={[styles.goalcont, { paddingBottom: height * 0.05 }]}>
-          <Image source={ongoalimages[currTrackMarker]} />
+          <Animated.View style={{ opacity: imgOpacity }}>
+            <Image source={ongoalimages[currTrackMarker]} />
+          </Animated.View>
 
           <Layout
             source={require('../../assets/images/goalfiemainboard.png')}
@@ -98,10 +143,10 @@ const Onboard: React.FC = () => {
           >
             <View style={styles.boardContainer}>
               <Text style={styles.boardTitle}>
-                {ongoaltexts[currTrackMarker].upptxt}
+                {typedTitle}
               </Text>
               <Text style={styles.boardText}>
-                {ongoaltexts[currTrackMarker].secdtxt}
+                {typedBody}
               </Text>
             </View>
           </Layout>
